@@ -43,6 +43,14 @@ def fetch_all_jobs(registry: list[dict]) -> list[Job]:
             )
             for job in fetcher.fetch_jobs():
                 jobs.append(job)
+        elif ats == "lever" and company.get("lever_slug"):
+            fetcher = LeverFetcher(
+                company_id=company_id,
+                company_name=company_name,
+                lever_slug=company["lever_slug"],
+            )
+            for job in fetcher.fetch_jobs():
+                jobs.append(job)
 
     remoteok_fetcher = RemoteOKFetcher(company_id="remoteok", company_name="RemoteOK")
     for job in remoteok_fetcher.fetch_jobs():
@@ -83,6 +91,9 @@ def main():
     new_jobs = dedupe.filter_new(iter(filtered_jobs))
     print(f"New jobs after dedupe: {len(new_jobs)}")
 
+    new_jobs = [j for j in new_jobs if j.score >= 70]
+    print(f"After minimum score filter (>=70): {len(new_jobs)}")
+
     if not new_jobs:
         print("No new jobs, exiting")
         return
@@ -92,9 +103,14 @@ def main():
     dedupe.mark_seen_batch(new_jobs)
 
     email = EmailDigest()
-    email.send_digest(new_jobs)
-
-    print(f"Sent digest with {len(new_jobs)} jobs")
+    try:
+        email.send_digest(new_jobs)
+        print(f"Sent digest with {len(new_jobs)} jobs")
+    except ValueError as e:
+        print(f"Email not configured: {e}")
+        print(f"Would have sent {len(new_jobs)} jobs:")
+        for job in new_jobs[:10]:
+            print(f"  - {job.title} at {job.company} (score: {job.score})")
 
 
 if __name__ == "__main__":

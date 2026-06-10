@@ -36,10 +36,30 @@ class JobScorer:
             reasons.append("Remote US")
 
         title_lower = job.title.lower()
-        if any(job.title.lower() == t.lower() for t in self.config.target_titles):
+        title_words = set(title_lower.replace("-", " ").replace("/", " ").split())
+
+        exact_match = any(job.title.lower() == t.lower() for t in self.config.target_titles)
+        core_pm_match = any(
+            t.lower() in title_words
+            for t in ["product manager", "product owner", "technical product manager",
+                      "project manager", "program manager", "delivery manager",
+                      "agile project manager", "agile delivery manager", "scrum master",
+                      "product operations manager", "product analyst", "business analyst"]
+        )
+        prefix_match = any(
+            title_lower.startswith(t.lower() + " ") or
+            title_lower.startswith(t.lower() + " - ") or
+            title_lower.startswith(t.lower() + ",")
+            for t in ["product manager", "product owner", "technical product manager"]
+        )
+
+        if exact_match:
             score += SCORING_RULES["exact_title_match"]
             reasons.append(f"Exact title match: {job.title}")
-        elif any(kw in title_lower for kw in self.config.include_title_keywords):
+        elif prefix_match:
+            score += SCORING_RULES["exact_title_match"]
+            reasons.append(f"Exact title prefix: {job.title}")
+        elif core_pm_match:
             score += SCORING_RULES["product_adjacent_title"]
             reasons.append("Product-adjacent title match")
 

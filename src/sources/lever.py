@@ -1,8 +1,6 @@
 import hashlib
-import re
 from datetime import datetime
-from typing import Iterator, Optional
-from urllib.parse import urlparse
+from typing import Iterator
 
 import requests
 
@@ -10,34 +8,31 @@ from src.models.job import Job, RemoteType, EmploymentType
 from src.sources import BaseFetcher
 
 
-class GreenhouseFetcher(BaseFetcher):
-    BASE_URL = "https://boards-api.greenhouse.io/v1/boards"
+class LeverFetcher(BaseFetcher):
+    BASE_URL = "https://api.lever.co/v0/postings"
 
-    def __init__(self, company_id: str, company_name: str, board_token: str):
+    def __init__(self, company_id: str, company_name: str, lever_slug: str):
         super().__init__(company_id, company_name)
-        self.board_token = board_token
+        self.lever_slug = lever_slug
 
     def fetch_jobs(self) -> Iterator[Job]:
-        url = f"{self.BASE_URL}/{self.board_token}/jobs?content=true"
+        url = f"{self.BASE_URL}/{self.lever_slug}?mode=json"
         try:
             response = requests.get(url, timeout=30)
             response.raise_for_status()
             data = response.json()
 
-            for job_data in data.get("jobs", []):
-                yield self._parse_job(job_data)
+            if isinstance(data, list):
+                for job_data in data:
+                    yield self._parse_job(job_data)
         except requests.RequestException as e:
-            print(f"Error fetching Greenhouse jobs for {self.company_name}: {e}")
+            print(f"Error fetching Lever jobs for {self.company_name}: {e}")
 
     def _parse_job(self, job_data: dict) -> Job:
-        location = job_data.get("location", {}).get("name", "Unknown")
-        departments = job_data.get("departments", [])
-        department = departments[0]["name"] if departments else None
-
-        apply_url = job_data.get("absolute_url", "")
+        location = job_data.get("location", "Unknown")
+        apply_url = job_data.get("applyUrl", "")
         job_id = self._generate_job_id(job_data.get("id"), apply_url)
 
-        employment_type = self._parse_employment_type(job_data.get("metadata"))
         remote_type = self._parse_remote_type(location)
 
         return Job(
@@ -45,13 +40,13 @@ class GreenhouseFetcher(BaseFetcher):
             external_id=str(job_data.get("id", "")),
             company=self.company_name,
             title=job_data.get("title", ""),
-            department=department,
+            department=job_data.get("departments", [{}])[0].get("title") if job_data.get("departments") else None,
             location=location,
             remote_type=remote_type,
-            employment_type=employment_type,
-            description=job_data.get("content", ""),
+            employment_type=EmploymentType.FULL_TIME,
+            description=job_data.get("description"),
             apply_url=apply_url,
-            source="greenhouse",
+            source="lever",
             posted_at=self._parse_posted_at(job_data),
             first_seen_at=datetime.utcnow(),
             last_seen_at=datetime.utcnow(),
@@ -63,6 +58,7 @@ class GreenhouseFetcher(BaseFetcher):
 
     def _parse_remote_type(self, location: str) -> RemoteType:
         location_lower = location.lower()
+
         if not any(kw in location_lower for kw in ["remote", "work from home", "distributed"]):
             if "hybrid" in location_lower:
                 return RemoteType.HYBRID
@@ -78,7 +74,6 @@ class GreenhouseFetcher(BaseFetcher):
             "mexico", "argentina", "chile", "colombia", "uae", "united arab emirates",
             "dubai", "israel", "south africa", "kenya", "egypt", "nigeria",
             "hong kong", "malaysia", "thailand", "indonesia", "philippines",
-            "remote,", "remote -", "work from home",
         ]
 
         us_only_keywords = ["united states", "usa", "us ", " us,"]
@@ -89,27 +84,3 @@ class GreenhouseFetcher(BaseFetcher):
         if has_non_us and not has_us_only:
             return RemoteType.REMOTE_OTHER
         return RemoteType.REMOTE_US
-
-    def _parse_employment_type(self, metadata: Optional[list]) -> EmploymentType:
-        if not metadata:
-            return EmploymentType.UNKNOWN
-        for item in metadata:
-            if item.get("name", "").lower() == "employment type":
-                value = item.get("value") or ""
-                value_lower = value.lower()
-                if "full" in value_lower:
-                    return EmploymentType.FULL_TIME
-                elif "part" in value_lower:
-                    return EmploymentType.PART_TIME
-                elif "contract" in value_lower:
-                    return EmploymentType.CONTRACT
-        return EmploymentType.UNKNOWN
-
-    def _parse_posted_at(self, job_data: dict) -> Optional[datetime]:
-        updated_at = job_data.get("updated_at")
-        if updated_at:
-            try:
-                return datetime.fromisoformat(updated_at.replace("Z", "+00:00"))
-            except ValueError:
-                pass
-        return None

@@ -31,7 +31,7 @@ class RemoteOKFetcher(BaseFetcher):
             print(f"Error fetching RemoteOK jobs: {e}")
 
     def _parse_job(self, job_data: dict) -> Optional[Job]:
-        title = job_data.get("h1") or job_data.get("title", "")
+        title = job_data.get("position") or job_data.get("h1") or job_data.get("title", "")
         if not title:
             return None
 
@@ -43,7 +43,7 @@ class RemoteOKFetcher(BaseFetcher):
 
         company = job_data.get("company", "")
         location = job_data.get("location", "Remote")
-        apply_url = job_data.get("url", "")
+        apply_url = job_data.get("url") or job_data.get("apply_url", "")
         job_id = self._generate_job_id(company, title, location, apply_url)
 
         salary_range = self._parse_salary(job_data.get("salary"))

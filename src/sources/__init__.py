@@ -11,3 +11,10 @@ class BaseFetcher(ABC):
     @abstractmethod
     def fetch_jobs(self) -> Iterator[Job]:
         raise NotImplementedError
+
+
+from .greenhouse import GreenhouseFetcher
+from .lever import LeverFetcher
+from .remoteok import RemoteOKFetcher
+
+__all__ = ["BaseFetcher", "GreenhouseFetcher", "LeverFetcher", "RemoteOKFetcher"]
