@@ -9,15 +9,8 @@ from src.config import get_config
 class EmailDigest:
     def __init__(self):
         self.config = get_config()
-        self._client: Optional[resend.Resend] = None
-
-    @property
-    def client(self) -> resend.Resend:
-        if self._client is None:
-            if not self.config.resend_api_key:
-                raise ValueError("RESEND_API_KEY not configured")
-            self._client = resend.Resend(api_key=self.config.resend_api_key)
-        return self._client
+        if self.config.resend_api_key:
+            resend.api_key = self.config.resend_api_key
 
     def send_digest(
         self,
@@ -46,8 +39,8 @@ class EmailDigest:
             "html": html_content,
         }
 
-        if self.config.resend_api_key:
-            return self.client.emails.send(**params)
+        if self.config.resend_api_key and self.config.resend_api_key != "placeholder_update_me":
+            return resend.Emails.send(**params)
         else:
             print(f"[DRY RUN] Would send email: {params}")
             return {"dry_run": True}
