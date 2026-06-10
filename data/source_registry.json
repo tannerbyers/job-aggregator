@@ -1,0 +1,202 @@
+[
+  {
+    "company_id": "gitlab",
+    "company_name": "GitLab",
+    "ticker": "GTLB",
+    "ats": "greenhouse",
+    "board_token": "gitlab",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 95
+  },
+  {
+    "company_id": "automattic",
+    "company_name": "Automattic",
+    "ticker": null,
+    "ats": "greenhouse",
+    "board_token": "automattic",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 95
+  },
+  {
+    "company_id": "zapier",
+    "company_name": "Zapier",
+    "ticker": null,
+    "ats": "greenhouse",
+    "board_token": "zapier",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 95
+  },
+  {
+    "company_id": "atlassian",
+    "company_name": "Atlassian",
+    "ticker": "TEAM",
+    "ats": "greenhouse",
+    "board_token": "atlassian",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 95
+  },
+  {
+    "company_id": "hubspot",
+    "company_name": "HubSpot",
+    "ticker": "HUBS",
+    "ats": "greenhouse",
+    "board_token": "hubspot",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 90
+  },
+  {
+    "company_id": "shopify",
+    "company_name": "Shopify",
+    "ticker": "SHOP",
+    "ats": "greenhouse",
+    "board_token": "shopify",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 90
+  },
+  {
+    "company_id": "miro",
+    "company_name": "Miro",
+    "ticker": null,
+    "ats": "greenhouse",
+    "board_token": "miro",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 85
+  },
+  {
+    "company_id": "datadog",
+    "company_name": "Datadog",
+    "ticker": "DDOG",
+    "ats": "greenhouse",
+    "board_token": "datadog",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 90
+  },
+  {
+    "company_id": "twilio",
+    "company_name": "Twilio",
+    "ticker": "TWLO",
+    "ats": "greenhouse",
+    "board_token": "twilio",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 85
+  },
+  {
+    "company_id": "stripe",
+    "company_name": "Stripe",
+    "ticker": "STR",
+    "ats": "greenhouse",
+    "board_token": "stripe",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 90
+  },
+  {
+    "company_id": "mongodb",
+    "company_name": "MongoDB",
+    "ticker": "MDB",
+    "ats": "greenhouse",
+    "board_token": "mongodb",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 85
+  },
+  {
+    "company_id": "elastic",
+    "company_name": "Elastic",
+    "ticker": "ESTC",
+    "ats": "greenhouse",
+    "board_token": "elastic",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 80
+  },
+  {
+    "company_id": "cloudflare",
+    "company_name": "Cloudflare",
+    "ticker": "NET",
+    "ats": "greenhouse",
+    "board_token": "cloudflare",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 90
+  },
+  {
+    "company_id": "okta",
+    "company_name": "Okta",
+    "ticker": "OKTA",
+    "ats": "greenhouse",
+    "board_token": "okta",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 85
+  },
+  {
+    "company_id": "servicenow",
+    "company_name": "ServiceNow",
+    "ticker": "NOW",
+    "ats": "greenhouse",
+    "board_token": "servicenow",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 85
+  },
+  {
+    "company_id": "snowflake",
+    "company_name": "Snowflake",
+    "ticker": "SNOW",
+    "ats": "greenhouse",
+    "board_token": "snowflake",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 85
+  },
+  {
+    "company_id": "crowdstrike",
+    "company_name": "CrowdStrike",
+    "ticker": "CRWD",
+    "ats": "greenhouse",
+    "board_token": "crowdstrike",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 80
+  },
+  {
+    "company_id": "mondaycom",
+    "company_name": "Monday.com",
+    "ticker": "MNDY",
+    "ats": "greenhouse",
+    "board_token": "monday",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 80
+  },
+  {
+    "company_id": "amplitude",
+    "company_name": "Amplitude",
+    "ticker": "AMPL",
+    "ats": "greenhouse",
+    "board_token": "amplitude",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 75
+  },
+  {
+    "company_id": "notion",
+    "company_name": "Notion",
+    "ticker": null,
+    "ats": "greenhouse",
+    "board_token": "notion",
+    "source_list": ["remote_friendly_saas"],
+    "status": "active",
+    "priority": 85
+  }
+]
