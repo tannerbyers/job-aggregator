@@ -33,7 +33,6 @@ class EmailDigest:
             subject = f"Remote PM/PO Job Digest - {len(jobs)} matches"
 
         params = {
-            "sender": self.config.email_from or "jobs@resend.dev",
             "to": self.config.email_to,
             "subject": subject,
             "html": html_content,
