@@ -1,6 +1,6 @@
 import hashlib
 from datetime import datetime
-from typing import Iterator
+from typing import Iterator, Optional
 
 import requests
 
