@@ -39,13 +39,15 @@ class JobScorer:
         title_words = set(title_lower.replace("-", " ").replace("/", " ").split())
 
         exact_match = any(job.title.lower() == t.lower() for t in self.config.target_titles)
-        core_pm_match = any(
-            t.lower() in title_words
-            for t in ["product manager", "product owner", "technical product manager",
-                      "project manager", "program manager", "delivery manager",
-                      "agile project manager", "agile delivery manager", "scrum master",
-                      "product operations manager", "product analyst", "business analyst"]
-        )
+
+        core_pm_keywords = [
+            "product manager", "product owner", "technical product manager",
+            "project manager", "program manager", "delivery manager",
+            "agile project manager", "agile delivery manager", "scrum master",
+            "product operations manager", "product analyst", "business analyst",
+        ]
+        core_pm_match = any(kw in title_lower for kw in core_pm_keywords)
+
         prefix_match = any(
             title_lower.startswith(t.lower() + " ") or
             title_lower.startswith(t.lower() + " - ") or
