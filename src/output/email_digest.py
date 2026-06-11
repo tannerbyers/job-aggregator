@@ -50,6 +50,14 @@ class EmailDigest:
     def _build_html(self, jobs: list) -> str:
         today = datetime.now().strftime("%B %d, %Y")
 
+        # Deduplicate by company - keep best scored job per company
+        seen_companies = set()
+        deduped_jobs = []
+        for job in sorted(jobs, key=lambda j: -j.score)[:50]:
+            if job.company not in seen_companies:
+                seen_companies.add(job.company)
+                deduped_jobs.append(job)
+
         html = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -74,8 +82,9 @@ class EmailDigest:
     .badge-health {{ background: #feebc8; color: #c05621; }}
     .badge-salary {{ background: #e9d8fd; color: #6b46c1; }}
     .posted {{ color: #a0aec0; font-size: 12px; }}
-    .apply-btn {{ display: inline-block; background: #4a5568; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: 500; white-space: nowrap; }}
+    .apply-btn {{ display: inline-block; background: #4a5568; color: #ffffff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: 500; white-space: nowrap; }}
     .apply-btn:hover {{ background: #2d3748; }}
+    .apply-btn:visited {{ color: #ffffff; }}
     .footer {{ text-align: center; padding: 20px; color: #a0aec0; font-size: 11px; margin-top: 20px; border-top: 1px solid #e2e8f0; }}
     .footer a {{ color: #4a5568; text-decoration: none; }}
 </style>
@@ -83,7 +92,7 @@ class EmailDigest:
 <body>
     <div class="header">
         <h1>Remote PM/PO Job Digest</h1>
-        <p>{today} | {len(jobs)} matching jobs</p>
+        <p>{today} | {len(deduped_jobs)} companies with openings</p>
     </div>
 
     <table>
@@ -98,7 +107,7 @@ class EmailDigest:
         <tbody>
 """
 
-        for job in jobs[:25]:
+        for job in deduped_jobs[:25]:
             posted_str = ""
             if job.posted_at:
                 try:
@@ -137,7 +146,7 @@ class EmailDigest:
                 </td>
                 <td class="location">{job.location[:35]}</td>
                 <td class="posted">{posted_str}</td>
-                <td><a href="{job.apply_url}" class="apply-btn">Apply</a></td>
+                <td><a href="{job.apply_url}" class="apply-btn" style="color: #ffffff; background: #4a5568; text-decoration: none;">Apply</a></td>
             </tr>
 """
 
