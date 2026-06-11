@@ -19,13 +19,49 @@ SCORING_RULES = {
     "unclear_remote": -25,
     "too_senior": -20,
     "wrong_function": -20,
+    "healthcare_boost": 25,
+    "healthcare_title": 15,
 }
+
+HEALTHCARE_KEYWORDS = [
+    "healthcare", "health care", "health", "medical", "medicine", "hospital",
+    "clinic", "patient", "clinical", "pharma", "pharmaceutical", "biotech",
+    "biotechnology", "life sciences", "health tech", "digital health",
+    "ehr", "emr", "electronic health", "electronic medical",
+    "insurance", "payer", "provider", "benefits", "hmo", "ppo",
+    "telemedicine", "telehealth", "remote patient", "virtual care",
+]
 
 
 class JobScorer:
-    def __init__(self, config: CandidateConfig):
+    def __init__(self, config: CandidateConfig, company_registry: Optional[list] = None):
         self.config = config
         self.target_titles_lower = [t.lower() for t in config.target_titles]
+        self.company_registry = company_registry or []
+
+    def _is_healthcare_company(self, company_name: str) -> bool:
+        company_lower = company_name.lower()
+        healthcare_companies = [
+            "optum", "unitedhealth", "cvs", "humana", "cigna", "anthem",
+            "elevance", "centene", "molina", "kaiser", "healthcare",
+            "medtronic", "johnson & johnson", "pfizer", "merck", "eli lilly",
+            "novo nordisk", "amgen", "gilead", "biogen", "regeneron",
+            "veeva", "flatiron", "health catalyst", "change healthcare",
+        ]
+        if any(c in company_lower for c in healthcare_companies):
+            return True
+        if any(kw in company_lower for kw in HEALTHCARE_KEYWORDS):
+            return True
+        return False
+
+    def _is_healthcare_job(self, job: Job) -> bool:
+        title_lower = job.title.lower()
+        desc_lower = (job.description or "").lower()
+        if any(kw in title_lower for kw in HEALTHCARE_KEYWORDS):
+            return True
+        if any(kw in desc_lower[:500] for kw in HEALTHCARE_KEYWORDS[:5]):
+            return True
+        return False
 
     def score(self, job: Job) -> tuple[int, list[str]]:
         score = 0
@@ -36,7 +72,6 @@ class JobScorer:
             reasons.append("Remote US")
 
         title_lower = job.title.lower()
-        title_words = set(title_lower.replace("-", " ").replace("/", " ").split())
 
         exact_match = any(job.title.lower() == t.lower() for t in self.config.target_titles)
 
@@ -80,6 +115,14 @@ class JobScorer:
                 score += SCORING_RULES["preferred_industry"]
                 reasons.append(f"Preferred industry: {industry}")
                 break
+
+        if self._is_healthcare_company(job.company):
+            score += SCORING_RULES["healthcare_boost"]
+            reasons.append("Healthcare company")
+
+        if self._is_healthcare_job(job):
+            score += SCORING_RULES["healthcare_title"]
+            reasons.append("Healthcare role")
 
         return score, reasons
 

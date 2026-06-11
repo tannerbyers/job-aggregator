@@ -13,7 +13,7 @@ def config():
 
 @pytest.fixture
 def scorer(config):
-    return JobScorer(config)
+    return JobScorer(config, [])
 
 
 def test_remote_us_bonus(scorer):

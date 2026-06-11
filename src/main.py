@@ -74,7 +74,7 @@ def main():
     print(f"Fetched {len(jobs)} raw jobs")
 
     filter = JobFilter(candidate_config)
-    scorer = JobScorer(candidate_config)
+    scorer = JobScorer(candidate_config, registry)
 
     filtered_jobs = []
     for job in jobs:

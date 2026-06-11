@@ -6,18 +6,9 @@
     "ats": "greenhouse",
     "board_token": "gitlab",
     "source_list": ["remote_friendly_saas"],
+    "industry": "devops",
     "status": "active",
     "priority": 95
-  },
-  {
-    "company_id": "datadog",
-    "company_name": "Datadog",
-    "ticker": "DDOG",
-    "ats": "greenhouse",
-    "board_token": "datadog",
-    "source_list": ["remote_friendly_saas"],
-    "status": "active",
-    "priority": 90
   },
   {
     "company_id": "stripe",
@@ -26,18 +17,31 @@
     "ats": "greenhouse",
     "board_token": "stripe",
     "source_list": ["remote_friendly_saas"],
+    "industry": "fintech",
+    "status": "active",
+    "priority": 95
+  },
+  {
+    "company_id": "smartsheet",
+    "company_name": "Smartsheet",
+    "ticker": "SMAR",
+    "ats": "greenhouse",
+    "board_token": "smartsheet",
+    "source_list": ["remote_friendly_saas", "collaboration"],
+    "industry": "saas",
     "status": "active",
     "priority": 90
   },
   {
-    "company_id": "mongodb",
-    "company_name": "MongoDB",
-    "ticker": "MDB",
+    "company_id": "datadog",
+    "company_name": "Datadog",
+    "ticker": "DDOG",
     "ats": "greenhouse",
-    "board_token": "mongodb",
+    "board_token": "datadog",
     "source_list": ["remote_friendly_saas"],
+    "industry": "devops",
     "status": "active",
-    "priority": 85
+    "priority": 90
   },
   {
     "company_id": "cloudflare",
@@ -46,6 +50,7 @@
     "ats": "greenhouse",
     "board_token": "cloudflare",
     "source_list": ["remote_friendly_saas"],
+    "industry": "security",
     "status": "active",
     "priority": 90
   },
@@ -56,6 +61,7 @@
     "ats": "greenhouse",
     "board_token": "okta",
     "source_list": ["remote_friendly_saas"],
+    "industry": "security",
     "status": "active",
     "priority": 85
   },
@@ -66,6 +72,18 @@
     "ats": "greenhouse",
     "board_token": "twilio",
     "source_list": ["remote_friendly_saas"],
+    "industry": "communications",
+    "status": "active",
+    "priority": 85
+  },
+  {
+    "company_id": "mongodb",
+    "company_name": "MongoDB",
+    "ticker": "MDB",
+    "ats": "greenhouse",
+    "board_token": "mongodb",
+    "source_list": ["remote_friendly_saas"],
+    "industry": "database",
     "status": "active",
     "priority": 85
   },
@@ -76,8 +94,31 @@
     "ats": "greenhouse",
     "board_token": "elastic",
     "source_list": ["remote_friendly_saas"],
+    "industry": "search",
     "status": "active",
     "priority": 80
+  },
+  {
+    "company_id": "wrike",
+    "company_name": "Wrike",
+    "ticker": null,
+    "ats": "greenhouse",
+    "board_token": "wrike",
+    "source_list": ["remote_friendly_saas", "collaboration"],
+    "industry": "saas",
+    "status": "active",
+    "priority": 80
+  },
+  {
+    "company_id": "liveperson",
+    "company_name": "LivePerson",
+    "ticker": "LPSN",
+    "ats": "greenhouse",
+    "board_token": "liveperson",
+    "source_list": ["remote_friendly_saas"],
+    "industry": "communications",
+    "status": "active",
+    "priority": 75
   },
   {
     "company_id": "amplitude",
@@ -86,7 +127,19 @@
     "ats": "greenhouse",
     "board_token": "amplitude",
     "source_list": ["remote_friendly_saas"],
+    "industry": "analytics",
     "status": "active",
     "priority": 75
+  },
+  {
+    "company_id": "intercom",
+    "company_name": "Intercom",
+    "ticker": null,
+    "ats": "greenhouse",
+    "board_token": "intercom",
+    "source_list": ["remote_friendly_saas"],
+    "industry": "communications",
+    "status": "active",
+    "priority": 80
   }
 ]
