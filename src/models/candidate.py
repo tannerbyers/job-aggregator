@@ -21,11 +21,25 @@ class CandidateConfig(BaseModel):
         "Product Operations Manager",
         "Product Analyst",
         "Business Analyst",
+        "Clinical Product Manager",
+        "Healthcare Product Manager",
+        "Healthcare Project Manager",
+        "Population Health Product Manager",
+        "Value Based Care Product Manager",
+        "Care Manager",
+        "Care Coordinator",
+        "Utilization Management",
+        "Care Management",
     ]
 
     preferred_industries: list[str] = [
-        "SaaS",
         "Healthcare",
+        "Health Care",
+        "Medical",
+        "Hospital",
+        "Clinic",
+        "Insurance",
+        "SaaS",
         "Fintech",
         "B2B",
         "Internal Tools",
@@ -49,6 +63,12 @@ class CandidateConfig(BaseModel):
         "mechanical",
         "warehouse",
         "retail",
+        "nurse",
+        "physician",
+        "doctor",
+        "medical assistant",
+        "billing",
+        "coding",
     ]
 
     include_title_keywords: list[str] = [
@@ -64,6 +84,14 @@ class CandidateConfig(BaseModel):
         "product operations",
         "product analyst",
         "business analyst",
+        "clinical product",
+        "healthcare product",
+        "population health",
+        "value based care",
+        "care manager",
+        "care coordinator",
+        "utilization management",
+        "care management",
     ]
 
     remote_include_keywords: list[str] = [

@@ -1,0 +1,102 @@
+|   # | Company                                    | Lane                                                 | Fit               |
+| --: | ------------------------------------------ | ---------------------------------------------------- | ----------------- |
+|   1 | Waystar                                    | RCM / claims / payments                              | Best              |
+|   2 | Inovalon                                   | payer/provider data + analytics                      | Best              |
+|   3 | Zelis                                      | claims payments + payment integrity                  | Best              |
+|   4 | FinThrive                                  | RCM / claims / clearinghouse                         | Best              |
+|   5 | Experian Health                            | eligibility / claims / RCM                           | Best              |
+|   6 | Edifecs                                    | payer interoperability / EDI / APIs                  | Best              |
+|   7 | Cognizant TriZetto                         | payer core admin / claims                            | Best              |
+|   8 | HealthEdge                                 | payer core admin / care management                   | Best              |
+|   9 | Cotiviti                                   | payment accuracy / risk adjustment                   | Best              |
+|  10 | MultiPlan                                  | payment integrity / payer-provider network           | Best              |
+|  11 | R1 RCM                                     | enterprise RCM                                       | Best              |
+|  12 | Ensemble Health Partners                   | hospital RCM                                         | Best              |
+|  13 | Optum Insight                              | claims / analytics / RCM                             | Strong            |
+|  14 | Change Healthcare / Optum                  | clearinghouse / claims / payment                     | Strong            |
+|  15 | Evolent                                    | value-based care / payer ops                         | Strong            |
+|  16 | Cohere Health                              | prior authorization                                  | Best              |
+|  17 | Carelon                                    | payer services / utilization mgmt                    | Strong            |
+|  18 | eviCore healthcare                         | prior auth / medical benefits mgmt                   | Strong            |
+|  19 | MCG Health                                 | clinical guidelines / utilization                    | Strong            |
+|  20 | InterQual / Optum                          | prior auth / utilization                             | Strong            |
+|  21 | ZeOmega                                    | population health / care management                  | Best              |
+|  22 | Medecision                                 | care management / payer workflows                    | Best              |
+|  23 | Softheon                                   | health plan enrollment / ACA exchange                | Best              |
+|  24 | Lyric                                      | payment accuracy / payer ops                         | Best              |
+|  25 | Vatica Health                              | risk adjustment / payer-provider                     | Strong            |
+|  26 | Reveleer                                   | risk adjustment / quality analytics                  | Best              |
+|  27 | Apixio                                     | AI coding / risk adjustment                          | Strong            |
+|  28 | HealthVerity                               | healthcare data exchange                             | Strong            |
+|  29 | Datavant                                   | health data connectivity                             | Strong            |
+|  30 | Komodo Health                              | healthcare data / analytics                          | Strong            |
+|  31 | Clarify Health                             | payer/provider analytics                             | Strong            |
+|  32 | Arcadia                                    | population health analytics                          | Best              |
+|  33 | Innovaccer                                 | healthcare data platform                             | Strong            |
+|  34 | Health Catalyst                            | provider analytics / data platform                   | Strong            |
+|  35 | MedeAnalytics                              | payer/provider analytics                             | Best              |
+|  36 | Milliman MedInsight                        | healthcare cost analytics                            | Strong            |
+|  37 | Avaneer Health                             | payer-provider data network                          | Best              |
+|  38 | CAQH                                       | provider data / credentialing / admin simplification | Best              |
+|  39 | symplr                                     | provider operations / credentialing                  | Best              |
+|  40 | Verisys                                    | provider credentialing / compliance                  | Strong            |
+|  41 | Medallion                                  | provider network management                          | Strong            |
+|  42 | Andros                                     | provider network management                          | Strong            |
+|  43 | Modio Health                               | credentialing                                        | Strong            |
+|  44 | QGenda                                     | provider scheduling / workforce                      | Strong            |
+|  45 | Kyruus Health                              | provider search / access                             | Strong            |
+|  46 | Phreesia                                   | patient intake / payments / access                   | Strong            |
+|  47 | Cedar                                      | patient billing / payments                           | Strong            |
+|  48 | Inbox Health                               | patient billing                                      | Strong            |
+|  49 | PatientPay                                 | patient payments                                     | Strong            |
+|  50 | InstaMed / J.P. Morgan Healthcare Payments | healthcare payments                                  | Strong            |
+|  51 | Flywire Healthcare                         | patient payments                                     | Adjacent          |
+|  52 | Rectangle Health                           | healthcare payments                                  | Adjacent          |
+|  53 | athenahealth                               | EHR / RCM / practice management                      | Best              |
+|  54 | NextGen Healthcare                         | EHR / PM / RCM                                       | Best              |
+|  55 | eClinicalWorks                             | EHR / PM / RCM                                       | Strong            |
+|  56 | Greenway Health                            | EHR / PM / RCM                                       | Best              |
+|  57 | Tebra                                      | practice management / billing                        | Strong            |
+|  58 | AdvancedMD                                 | EHR / PM / billing                                   | Strong            |
+|  59 | CareCloud                                  | EHR / RCM / PM                                       | Strong            |
+|  60 | ModMed                                     | specialty EHR / RCM                                  | Strong            |
+|  61 | Veradigm                                   | EHR / payer-provider data                            | Strong            |
+|  62 | Epic                                       | enterprise EHR / RCM                                 | Larger but useful |
+|  63 | Oracle Health                              | enterprise EHR / RCM                                 | Larger but useful |
+|  64 | MEDITECH                                   | hospital EHR                                         | Strong            |
+|  65 | Altera Digital Health                      | EHR / clinical systems                               | Strong            |
+|  66 | Netsmart                                   | post-acute / behavioral EHR                          | Strong            |
+|  67 | PointClickCare                             | long-term care EHR / network                         | Strong            |
+|  68 | WellSky                                    | post-acute / home health software                    | Strong            |
+|  69 | MatrixCare                                 | post-acute EHR                                       | Strong            |
+|  70 | WebPT                                      | rehab therapy software / billing                     | Strong            |
+|  71 | Therapy Brands                             | behavioral health / therapy software                 | Strong            |
+|  72 | RXNT                                       | EHR / eRx / billing                                  | Strong            |
+|  73 | Elation Health                             | primary care EHR                                     | Strong            |
+|  74 | Canvas Medical                             | EHR / developer platform                             | Strong            |
+|  75 | Healthie                                   | EHR / patient engagement                             | Strong            |
+|  76 | DrChrono                                   | EHR / practice management                            | Strong            |
+|  77 | Kareo                                      | practice management / billing                        | Strong            |
+|  78 | SimplePractice                             | practice management / billing                        | Adjacent          |
+|  79 | Kareo/Tebra Billing                        | RCM / practice management                            | Strong            |
+|  80 | CentralReach                               | autism/ABA practice software                         | Adjacent          |
+|  81 | Relatient                                  | patient engagement / access                          | Strong            |
+|  82 | Luma Health                                | patient access / scheduling                          | Strong            |
+|  83 | Artera                                     | patient communications                               | Strong            |
+|  84 | Get Well                                   | patient engagement                                   | Adjacent          |
+|  85 | NRC Health                                 | patient experience analytics                         | Adjacent          |
+|  86 | Press Ganey                                | patient experience / healthcare analytics            | Larger but useful |
+|  87 | Surescripts                                | e-prescribing / clinical network                     | Best              |
+|  88 | DrFirst                                    | eRx / medication management                          | Strong            |
+|  89 | CoverMyMeds                                | prior auth / pharmacy access                         | Best              |
+|  90 | RxBenefits                                 | pharmacy benefits / payer ops                        | Strong            |
+|  91 | Capital Rx                                 | pharmacy benefits platform                           | Strong            |
+|  92 | Navitus Health Solutions                   | PBM / payer ops                                      | Strong            |
+|  93 | Omnicell                                   | pharmacy automation                                  | Adjacent          |
+|  94 | Aidbox / Health Samurai                    | FHIR / interoperability                              | Strong            |
+|  95 | Redox                                      | healthcare integration APIs                          | Best              |
+|  96 | Zus Health                                 | healthcare data platform                             | Strong            |
+|  97 | Particle Health                            | health data access                                   | Strong            |
+|  98 | 1upHealth                                  | FHIR / payer data APIs                               | Best              |
+|  99 | Ribbon Health                              | provider data APIs                                   | Strong            |
+| 100 | b.well Connected Health                    | patient data / interoperability                      | Strong            |

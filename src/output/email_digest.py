@@ -55,29 +55,29 @@ class EmailDigest:
 <head>
 <meta charset="utf-8">
 <style>
-    body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 700px; margin: 0 auto; padding: 15px; background: #f8f9fa; }}
-    .header {{ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 15px; }}
-    .header h1 {{ margin: 0; font-size: 20px; font-weight: 600; }}
-    .header p {{ margin: 5px 0 0; opacity: 0.9; font-size: 13px; }}
-    table {{ width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
-    th {{ background: #f8f9fa; padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #e9ecef; }}
-    td {{ padding: 12px; vertical-align: middle; border-bottom: 1px solid #f0f0f0; font-size: 13px; }}
+    body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 700px; margin: 0 auto; padding: 20px; background: #ffffff; }}
+    .header {{ background: #4a5568; color: white; padding: 24px 20px; text-align: center; margin-bottom: 20px; }}
+    .header h1 {{ margin: 0; font-size: 18px; font-weight: 600; letter-spacing: 0.3px; }}
+    .header p {{ margin: 6px 0 0; opacity: 0.85; font-size: 13px; font-weight: 400; }}
+    table {{ width: 100%; border-collapse: collapse; }}
+    th {{ padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #e2e8f0; }}
+    td {{ padding: 14px 12px; vertical-align: middle; border-bottom: 1px solid #f0f0f0; font-size: 13px; }}
     tr:last-child td {{ border-bottom: none; }}
-    tr:hover {{ background: #fafafa; }}
-    .title {{ font-weight: 600; color: #1a1a1a; }}
-    .company {{ font-size: 12px; color: #666; margin-top: 2px; }}
-    .location {{ color: #444; font-size: 13px; }}
-    .badges {{ display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }}
-    .badge {{ padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; }}
-    .badge-remote {{ background: #e8f5e9; color: #2e7d32; }}
-    .badge-new {{ background: #e3f2fd; color: #1565c0; }}
-    .badge-health {{ background: #fce4ec; color: #c2185b; }}
-    .badge-salary {{ background: #fff3e0; color: #e65100; }}
-    .posted {{ color: #888; font-size: 12px; }}
-    .apply-btn {{ display: inline-block; background: #667eea; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-size: 12px; font-weight: 500; }}
-    .apply-btn:hover {{ background: #5a6fd6; }}
-    .footer {{ text-align: center; padding: 15px; color: #999; font-size: 11px; margin-top: 15px; }}
-    .footer a {{ color: #667eea; text-decoration: none; }}
+    tr:hover td {{ background: #f7fafc; }}
+    .title {{ font-weight: 600; color: #2d3748; }}
+    .company {{ font-size: 12px; color: #718096; margin-top: 3px; }}
+    .location {{ color: #4a5568; font-size: 13px; }}
+    .badges {{ display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; }}
+    .badge {{ padding: 2px 7px; border-radius: 3px; font-size: 10px; font-weight: 600; }}
+    .badge-remote {{ background: #c6f6d5; color: #276749; }}
+    .badge-new {{ background: #bee3f8; color: #2b6cb0; }}
+    .badge-health {{ background: #feebc8; color: #c05621; }}
+    .badge-salary {{ background: #e9d8fd; color: #6b46c1; }}
+    .posted {{ color: #a0aec0; font-size: 12px; }}
+    .apply-btn {{ display: inline-block; background: #4a5568; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: 500; white-space: nowrap; }}
+    .apply-btn:hover {{ background: #2d3748; }}
+    .footer {{ text-align: center; padding: 20px; color: #a0aec0; font-size: 11px; margin-top: 20px; border-top: 1px solid #e2e8f0; }}
+    .footer a {{ color: #4a5568; text-decoration: none; }}
 </style>
 </head>
 <body>
@@ -89,10 +89,10 @@ class EmailDigest:
     <table>
         <thead>
             <tr>
-                <th style="width:35%">Role & Company</th>
-                <th style="width:30%">Location</th>
-                <th style="width:15%">Last Posted</th>
-                <th style="width:20%"></th>
+                <th style="width:32%">Role & Company</th>
+                <th style="width:28%">Location</th>
+                <th style="width:12%">Last Posted</th>
+                <th style="width:28%"></th>
             </tr>
         </thead>
         <tbody>
@@ -120,7 +120,7 @@ class EmailDigest:
 
             badges = ""
             if job.remote_type.value == "remote_us":
-                badges += '<span class="badge badge-remote">Remote US</span>'
+                badges += '<span class="badge badge-remote">Remote</span>'
             if posted_str in ["Today", "Yesterday"]:
                 badges += '<span class="badge badge-new">Fresh</span>'
             if any("healthcare" in r.lower() for r in job.score_reasons):
@@ -146,7 +146,7 @@ class EmailDigest:
     </table>
 
     <div class="footer">
-        <p>Sent by Job Aggregator | Matches updated Mon-Fri | <a href="#">Manage preferences</a> | <a href="#">Unsubscribe</a></p>
+        <p>Sent by Job Aggregator | Mon-Fri | <a href="#">Preferences</a> | <a href="#">Unsubscribe</a></p>
     </div>
 </body>
 </html>
