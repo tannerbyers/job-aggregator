@@ -5,7 +5,9 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "inovalon",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 95
@@ -16,7 +18,9 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "coherehealth",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 95
@@ -27,18 +31,22 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "capitalrx",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 90
   },
   {
-    "company_id": "komodhealth",
+    "company_id": "komodohealth",
     "company_name": "Komodo Health",
     "ticker": null,
     "ats": "greenhouse",
-    "board_token": "komodhealth",
-    "source_list": ["healthcare"],
+    "board_token": "komodohealth",
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 90
@@ -49,7 +57,9 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "mcghealth",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 85
@@ -60,7 +70,9 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "healthverity",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 85
@@ -71,7 +83,9 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "qgenda",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 85
@@ -82,7 +96,9 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "tebra",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 85
@@ -93,7 +109,9 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "advancedmd",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 80
@@ -104,7 +122,9 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "elationhealth",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 80
@@ -115,7 +135,9 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "lumahealth",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 80
@@ -126,75 +148,11 @@
     "ticker": null,
     "ats": "greenhouse",
     "board_token": "1uphealth",
-    "source_list": ["healthcare"],
+    "source_list": [
+      "healthcare"
+    ],
     "industry": "healthcare",
     "status": "active",
     "priority": 80
-  },
-  {
-    "company_id": "gitlab",
-    "company_name": "GitLab",
-    "ticker": "GTLB",
-    "ats": "greenhouse",
-    "board_token": "gitlab",
-    "source_list": ["remote_friendly_saas"],
-    "industry": "devops",
-    "status": "active",
-    "priority": 85
-  },
-  {
-    "company_id": "stripe",
-    "company_name": "Stripe",
-    "ticker": "STR",
-    "ats": "greenhouse",
-    "board_token": "stripe",
-    "source_list": ["remote_friendly_saas"],
-    "industry": "fintech",
-    "status": "active",
-    "priority": 85
-  },
-  {
-    "company_id": "smartsheet",
-    "company_name": "Smartsheet",
-    "ticker": "SMAR",
-    "ats": "greenhouse",
-    "board_token": "smartsheet",
-    "source_list": ["remote_friendly_saas", "collaboration"],
-    "industry": "saas",
-    "status": "active",
-    "priority": 80
-  },
-  {
-    "company_id": "datadog",
-    "company_name": "Datadog",
-    "ticker": "DDOG",
-    "ats": "greenhouse",
-    "board_token": "datadog",
-    "source_list": ["remote_friendly_saas"],
-    "industry": "devops",
-    "status": "active",
-    "priority": 80
-  },
-  {
-    "company_id": "wrike",
-    "company_name": "Wrike",
-    "ticker": null,
-    "ats": "greenhouse",
-    "board_token": "wrike",
-    "source_list": ["remote_friendly_saas", "collaboration"],
-    "industry": "saas",
-    "status": "active",
-    "priority": 75
-  },
-  {
-    "company_id": "intercom",
-    "company_name": "Intercom",
-    "ticker": null,
-    "ats": "greenhouse",
-    "board_token": "intercom",
-    "source_list": ["remote_friendly_saas"],
-    "industry": "communications",
-    "status": "active",
-    "priority": 75
   }
 ]

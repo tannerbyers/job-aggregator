@@ -1,1 +1,10 @@
-{"seen_job_ids": [], "last_updated": null}
+{
+  "seen_job_ids": [
+    "b6bf7418ed93d58013a62bf9d1d8a9cb",
+    "74e643a7b7bb50b37dc935e7b6e37250",
+    "d060caaa7ff9a98129f2d9712095d44f",
+    "38e1c143f9b06609b525779780ffdd4c",
+    "37bf873adb56675a23e6edd098ae058a"
+  ],
+  "last_updated": "2026-06-11T20:16:34.999293"
+}

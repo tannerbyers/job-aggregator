@@ -42,6 +42,7 @@ class Job(BaseModel):
     last_seen_at: datetime = Field(default_factory=datetime.utcnow)
     score: int = 0
     score_reasons: list[str] = Field(default_factory=list)
+    risks: list[str] = Field(default_factory=list)
 
     def to_digest_string(self) -> str:
         salary = ""

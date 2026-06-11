@@ -1,0 +1,25 @@
+{
+  "feedback": [],
+  "adjustments": {
+    "seniority_penalties": {
+      "senior": -10,
+      "lead": -10,
+      "principal": -15,
+      "group": -15,
+      "head": -20
+    },
+    "domain_penalties": {},
+    "domain_boosts": {
+      "revenue_cycle": 10,
+      "claims": 10,
+      "clearinghouse": 10,
+      "payer_connectivity": 10,
+      "provider_connectivity": 10,
+      "edi": 10,
+      "payment_accuracy": 10,
+      "hipaa": 5
+    },
+    "company_penalties": [],
+    "company_boosts": {}
+  }
+}
