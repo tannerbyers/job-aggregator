@@ -40,7 +40,7 @@ class EmailDigest:
         }
 
         if self.config.resend_api_key and self.config.resend_api_key != "placeholder_update_me":
-            return resend.Emails.send(**params)
+            return resend.Emails.send(params=params)
         else:
             print(f"[DRY RUN] Would send email: {params}")
             return {"dry_run": True}
