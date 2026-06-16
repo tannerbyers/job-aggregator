@@ -167,7 +167,7 @@ def score_kendall(job: Job, profile: dict, adjustments: dict = None) -> Tuple[in
         risks.append("May require coding")
 
     if job.salary_min and job.salary_max:
-        score += 5
+        score += 15  # Increased from 5 to prioritize salary visibility
         reasons.append("Salary visible")
 
     return score, reasons, risks

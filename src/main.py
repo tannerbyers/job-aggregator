@@ -145,18 +145,17 @@ def main():
     new_jobs = dedupe.filter_new(iter(filtered_jobs))
     print(f"New jobs after dedupe: {len(new_jobs)}")
 
-    min_score = profile.get("minimum_score", 82)
+    min_score = profile.get("minimum_score", 0)
     new_jobs = [j for j in new_jobs if j.score >= min_score]
     print(f"After minimum score filter (>={min_score}): {len(new_jobs)}")
 
     if not new_jobs:
-        print("No strong matches today")
+        print("No matches today")
         return
 
-    new_jobs.sort(key=lambda j: j.score, reverse=True)
+    new_jobs.sort(key=lambda j: (-bool(j.salary_min and j.salary_max), -j.score))
 
-    max_jobs = profile.get("daily_max_jobs", 5)
-    final_jobs = new_jobs[:max_jobs]
+    final_jobs = new_jobs
 
     dedupe.mark_seen_batch(final_jobs)
 
