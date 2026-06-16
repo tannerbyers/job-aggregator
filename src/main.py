@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import json
 import os
 from datetime import datetime, timezone, timedelta
@@ -9,6 +10,7 @@ from src.models.job import Job
 from src.matching.kendall_scorer import hard_reject, score_kendall
 from src.matching.dedupe import JobDedupe
 from src.sources.greenhouse import GreenhouseFetcher
+from src.sources.lever import LeverFetcher
 from src.sources.remoteok import RemoteOKFetcher
 from src.output.kendall_email import EmailDigest
 
@@ -91,6 +93,16 @@ def fetch_all_jobs(registry: list[dict]) -> list[Job]:
                 company_name=company_name,
                 board_token=company["board_token"],
             )
+        elif ats == "lever" and company.get("lever_slug"):
+            fetcher = LeverFetcher(
+                company_id=company_id,
+                company_name=company_name,
+                lever_slug=company["lever_slug"],
+            )
+        else:
+            fetcher = None
+
+        if fetcher:
             for job in fetcher.fetch_jobs():
                 jobs.append(job)
 
@@ -102,10 +114,20 @@ def fetch_all_jobs(registry: list[dict]) -> list[Job]:
 
 
 def main():
+    parser = argparse.ArgumentParser(description='Run Kendall job digest')
+    parser.add_argument('--fresh', action='store_true', help='Clear old seen jobs before processing')
+    args = parser.parse_args()
+
     print(f"[{datetime.now(timezone.utc).isoformat()}] Starting Kendall's job digest")
 
     config = get_config()
     data_dir = config.data_dir
+
+    if args.fresh:
+        seen_file = data_dir / 'jobs_seen.json'
+        if seen_file.exists():
+            seen_file.write_text(json.dumps({'seen_job_ids': []}))
+            print('Cleared old seen job records')
 
     registry = load_source_registry(data_dir / "source_registry.json")
     profile = load_kendall_profile(data_dir)

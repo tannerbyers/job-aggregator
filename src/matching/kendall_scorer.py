@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 from typing import Optional, Tuple
 
@@ -21,11 +22,11 @@ KENDALL_DOMAINS_PENALIZE = [
 ]
 
 SENIORITY_PENALTIES = {
-    "senior": -5,
-    "lead": -5,
-    "principal": -10,
-    "group": -10,
-    "head": -15,
+    "senior": -15,
+    "lead": -15,
+    "principal": -20,
+    "group": -15,
+    "head": -25,
 }
 
 PM_TITLE_KEYWORDS = ["product manager", "product owner", "program manager"]
@@ -124,15 +125,23 @@ def score_kendall(job: Job, profile: dict, adjustments: dict = None) -> Tuple[in
     if domain_matches:
         reasons.append(f"Domain: {', '.join(domain_matches[:2])}")
 
+    operational_title = any(kw in title_lower for kw in ["operations manager", "program operations", "government program", "clinical programs"])
+    if operational_title:
+        score -= 10
+        risks.append("Operations-heavy title")
+
     if any(job.title.lower() == t.lower() for t in preferred_titles):
         score += 25
         reasons.append("Exact preferred title")
-    elif is_pm_title:
+    elif is_pm_title and not any(kw in title_lower for kw in ["operations manager", "program operations", "project manager"]):
         score += 20
         reasons.append("PM title match")
     elif is_pm_adjacent and not is_pm_excluded and domain_matches:
-        score += 5
+        score += 6
         reasons.append("PM-adjacent role (analyst + domain)")
+    elif is_pm_adjacent and not is_pm_excluded:
+        score += 1
+        reasons.append("Analyst role")
     elif is_pm_excluded:
         score -= 10
         risks.append("Non-PM role (sales/implement/support)")
@@ -150,9 +159,12 @@ def score_kendall(job: Job, profile: dict, adjustments: dict = None) -> Tuple[in
 
     penalty_domains = adjustments.get("domain_penalties", {})
     for domain in KENDALL_DOMAINS_PENALIZE:
-        if domain in title_lower:
+        if domain in title_lower and domain not in ["project manager"]:
             score -= 15
             risks.append(f"Generic role: {domain}")
+        elif domain == "project manager" and "program" not in title_lower and "product" not in title_lower:
+            score -= 10
+            risks.append("Generic role: project manager")
 
     if job.company.lower() in [c.lower() for c in company_penalties]:
         score -= 15

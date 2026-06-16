@@ -78,6 +78,19 @@
     "priority": 85
   },
   {
+    "company_id": "medeanalytics",
+    "company_name": "MedeAnalytics",
+    "ticker": null,
+    "ats": "greenhouse",
+    "board_token": "medeanalytics",
+    "source_list": [
+      "healthcare"
+    ],
+    "industry": "healthcare",
+    "status": "active",
+    "priority": 80
+  },
+  {
     "company_id": "qgenda",
     "company_name": "QGenda",
     "ticker": null,
