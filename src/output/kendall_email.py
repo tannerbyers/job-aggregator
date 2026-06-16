@@ -28,7 +28,7 @@ class EmailDigest:
         html_content = self._build_html(jobs, total_scanned)
 
         if not subject:
-            subject = f"Kendall — {len(jobs)} healthcare roles today"
+            subject = f"Kendall - {len(jobs)} PM/PO role matches today"
 
         params = {
             "from": self.config.email_from,
@@ -72,6 +72,8 @@ class EmailDigest:
     .job-salary-na {{ font-size: 13px; color: #aaa; margin: 8px 0 4px; font-style: italic; }}
     .job-why {{ font-size: 13px; color: #666660; line-height: 1.5; }}
     .job-meta {{ font-size: 12px; color: #aaa; margin-top: 10px; }}
+    .apply-btn {{ display: inline-block; background: #3b6b4a; color: #ffffff; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; margin-top: 16px; }}
+    .apply-btn:hover {{ background: #2f5a3f; }}
     .footer {{ text-align: center; padding-top: 32px; margin-top: 32px; border-top: 1px solid #e8e8e4; }}
     .footer p {{ font-size: 12px; color: #aaa; line-height: 1.8; }}
     .footer a {{ color: #888880; text-decoration: underline; }}
@@ -87,7 +89,7 @@ class EmailDigest:
 
         <div class="summary">
             <div class="summary-number">{total_scanned}</div>
-            <div class="summary-label">jobs scanned · {sent_count} matched your criteria</div>
+            <div class="summary-label">jobs scanned · {sent_count} PM/PO matches</div>
         </div>
 
         <div class="jobs">
@@ -131,7 +133,8 @@ class EmailDigest:
                 </div>
                 {salary_html}
                 <div class="job-why">{why_fits}</div>
-                {meta_html}
+            {meta_html}
+            <a href="{job.apply_url}" class="apply-btn">Apply</a>
             </div>
 """
 
